@@ -1,7 +1,7 @@
 # Личный проект «Киноман» [![Build status][travis-image]][travis-url]
 
 * Студент: [Arina Livanenkova](https://up.htmlacademy.ru/ecmascript/12/user/882513).
-* Наставник: `Неизвестно`.
+* Наставник: `Максим Деев`.
 
 ---
 
