@@ -311,7 +311,6 @@ FilmsListsExtra.forEach(function (element, i) {
   for (i = 0; i < EXTRA_FILMS_COUNT; i++) {
     render (filmsListContainer, createSiteFilmCard(), `beforeend`);
   }
-
 });
 
 const siteFooterElement = document.querySelector(`.footer`);
@@ -324,7 +323,7 @@ const filmDetailsTopContainer = document.querySelector(`.form-details__top-conta
 
 const filmDetailsBottomContainer = document.querySelector(`.form-details__bottom-container`);
 
-render(filmDetailsTopContainer, createFilmDetailsDescription(), 'beforeend');
+render(filmDetailsTopContainer, createFilmDetailsDescription(), `beforeend`);
 
 render(filmDetailsBottomContainer, createFilmDetailsComments(), `beforeend`);
 
