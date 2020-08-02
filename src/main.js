@@ -309,7 +309,7 @@ FilmsListsExtra.forEach(function (element, i) {
   render(element, createFilmsListExtraTitle(EXTRA_FILMS_TITLES[i]), `afterbegin`);
 
   for (i = 0; i < EXTRA_FILMS_COUNT; i++) {
-    render (filmsListContainer, createSiteFilmCard(), `beforeend`);
+    render(filmsListContainer, createSiteFilmCard(), `beforeend`);
   }
 });
 
