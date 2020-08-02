@@ -264,7 +264,7 @@ const createFilmDetailsComments = () => {
   );
 };
 
-const ShowMoreFilmsButton = () => {
+const showMoreFilmsButton = () => {
   return (
     `<button class="films-list__show-more">Show more</button>`
   );
@@ -298,11 +298,11 @@ const filmsList = filmsElement.querySelector(`.films-list`);
 const filmsListContainer = filmsList.querySelector(`.films-list__container`);
 const FilmsListsExtra = filmsElement.querySelectorAll(`.films-list--extra`);
 
-for (let i = 0; i < FILM_CARDS_COUNT; i++ ) {
+for (let i = 0; i < FILM_CARDS_COUNT; i++ ){
   render(filmsListContainer, createSiteFilmCard(), `beforeend`);
 }
 
-render(filmsList, ShowMoreFilmsButton(), `beforeend`);
+render(filmsList, showMoreFilmsButton(), `beforeend`);
 
 FilmsListsExtra.forEach(function (element, i) {
 
@@ -310,7 +310,7 @@ FilmsListsExtra.forEach(function (element, i) {
 
   const filmsListContainer = element.querySelector(`.films-list__container`);
 
-  for (i = 0; i < EXTRA_FILMS_COUNT; i++){
+  for (i = 0; i < EXTRA_FILMS_COUNT; i++) {
     render (filmsListContainer, createSiteFilmCard(), `beforeend`);
   }
 
