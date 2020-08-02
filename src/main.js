@@ -298,29 +298,29 @@ const filmsList = filmsElement.querySelector(`.films-list`);
 const filmsListContainer = filmsList.querySelector(`.films-list__container`);
 const FilmsListsExtra = filmsElement.querySelectorAll(`.films-list--extra`);
 
-for ( let i = 0; i < FILM_CARDS_COUNT; i++ ) {
+for (let i = 0; i < FILM_CARDS_COUNT; i++ ) {
   render(filmsListContainer, createSiteFilmCard(), `beforeend`);
 }
 
 render(filmsList, ShowMoreFilmsButton(), `beforeend`);
 
-FilmsListsExtra.forEach(function(element, i) {
+FilmsListsExtra.forEach(function (element, i) {
 
-  render(element, createFilmsListExtraTitle(EXTRA_FILMS_TITLES[i]),`afterbegin`);
+  render(element, createFilmsListExtraTitle(EXTRA_FILMS_TITLES[i]), `afterbegin`);
 
   const filmsListContainer = element.querySelector(`.films-list__container`);
 
-  for ( let i = 0; i< EXTRA_FILMS_COUNT; i++){
-    render(filmsListContainer, createSiteFilmCard(), `beforeend`);
+  for (i = 0; i < EXTRA_FILMS_COUNT; i++){
+    render (filmsListContainer, createSiteFilmCard(), `beforeend`);
   }
 
-})
+});
 
 const siteFooterElement = document.querySelector(`.footer`);
 
-render(siteFooterElement, createSiteFooterStatistics(),`beforeend`);
+render(siteFooterElement, createSiteFooterStatistics(), `beforeend`);
 
-render(siteFooterElement, createFilmDetailsPopup(),`afterend`)
+render(siteFooterElement, createFilmDetailsPopup(), `afterend`);
 
 const filmDetailsTopContainer = document.querySelector(`.form-details__top-container`);
 
