@@ -95,78 +95,78 @@ const createFilmDetailsPopup = () => {
 
 const createFilmDetailsDescription = () => {
   return (
-  `<div class="film-details__close">
-  <button class="film-details__close-btn" type="button">close</button>
-  </div>
-  <div class="film-details__info-wrap">
-  <div class="film-details__poster">
-    <img class="film-details__poster-img" src="./images/posters/the-great-flamarion.jpg" alt="">
+    `<div class="film-details__close">
+    <button class="film-details__close-btn" type="button">close</button>
+    </div>
+    <div class="film-details__info-wrap">
+    <div class="film-details__poster">
+      <img class="film-details__poster-img" src="./images/posters/the-great-flamarion.jpg" alt="">
 
-    <p class="film-details__age">18+</p>
-  </div>
+      <p class="film-details__age">18+</p>
+    </div>
 
-  <div class="film-details__info">
-    <div class="film-details__info-head">
-      <div class="film-details__title-wrap">
-        <h3 class="film-details__title">The Great Flamarion</h3>
-        <p class="film-details__title-original">Original: The Great Flamarion</p>
+    <div class="film-details__info">
+      <div class="film-details__info-head">
+        <div class="film-details__title-wrap">
+          <h3 class="film-details__title">The Great Flamarion</h3>
+          <p class="film-details__title-original">Original: The Great Flamarion</p>
+        </div>
+
+        <div class="film-details__rating">
+          <p class="film-details__total-rating">8.9</p>
+        </div>
       </div>
 
-      <div class="film-details__rating">
-        <p class="film-details__total-rating">8.9</p>
+      <table class="film-details__table">
+        <tr class="film-details__row">
+          <td class="film-details__term">Director</td>
+          <td class="film-details__cell">Anthony Mann</td>
+        </tr>
+        <tr class="film-details__row">
+          <td class="film-details__term">Writers</td>
+          <td class="film-details__cell">Anne Wigton, Heinz Herald, Richard Weil</td>
+        </tr>
+        <tr class="film-details__row">
+          <td class="film-details__term">Actors</td>
+          <td class="film-details__cell">Erich von Stroheim, Mary Beth Hughes, Dan Duryea</td>
+        </tr>
+        <tr class="film-details__row">
+          <td class="film-details__term">Release Date</td>
+          <td class="film-details__cell">30 March 1945</td>
+        </tr>
+        <tr class="film-details__row">
+          <td class="film-details__term">Runtime</td>
+          <td class="film-details__cell">1h 18m</td>
+        </tr>
+        <tr class="film-details__row">
+          <td class="film-details__term">Country</td>
+          <td class="film-details__cell">USA</td>
+        </tr>
+        <tr class="film-details__row">
+          <td class="film-details__term">Genres</td>
+          <td class="film-details__cell">
+            <span class="film-details__genre">Drama</span>
+            <span class="film-details__genre">Film-Noir</span>
+            <span class="film-details__genre">Mystery</span></td>
+        </tr>
+      </table>
+
+      <p class="film-details__film-description">
+        The film opens following a murder at a cabaret in Mexico City in 1936, and then presents the events leading up to it in flashback. The Great Flamarion (Erich von Stroheim) is an arrogant, friendless, and misogynous marksman who displays his trick gunshot act in the vaudeville circuit. His show features a beautiful assistant, Connie (Mary Beth Hughes) and her drunken husband Al (Dan Duryea), Flamarion's other assistant. Flamarion falls in love with Connie, the movie's femme fatale, and is soon manipulated by her into killing her no good husband during one of their acts.
+      </p>
       </div>
     </div>
 
-    <table class="film-details__table">
-      <tr class="film-details__row">
-        <td class="film-details__term">Director</td>
-        <td class="film-details__cell">Anthony Mann</td>
-      </tr>
-      <tr class="film-details__row">
-        <td class="film-details__term">Writers</td>
-        <td class="film-details__cell">Anne Wigton, Heinz Herald, Richard Weil</td>
-      </tr>
-      <tr class="film-details__row">
-        <td class="film-details__term">Actors</td>
-        <td class="film-details__cell">Erich von Stroheim, Mary Beth Hughes, Dan Duryea</td>
-      </tr>
-      <tr class="film-details__row">
-        <td class="film-details__term">Release Date</td>
-        <td class="film-details__cell">30 March 1945</td>
-      </tr>
-      <tr class="film-details__row">
-        <td class="film-details__term">Runtime</td>
-        <td class="film-details__cell">1h 18m</td>
-      </tr>
-      <tr class="film-details__row">
-        <td class="film-details__term">Country</td>
-        <td class="film-details__cell">USA</td>
-      </tr>
-      <tr class="film-details__row">
-        <td class="film-details__term">Genres</td>
-        <td class="film-details__cell">
-          <span class="film-details__genre">Drama</span>
-          <span class="film-details__genre">Film-Noir</span>
-          <span class="film-details__genre">Mystery</span></td>
-      </tr>
-    </table>
+  <section class="film-details__controls">
+    <input type="checkbox" class="film-details__control-input visually-hidden" id="watchlist" name="watchlist">
+    <label for="watchlist" class="film-details__control-label film-details__control-label--watchlist">Add to watchlist</label>
 
-    <p class="film-details__film-description">
-      The film opens following a murder at a cabaret in Mexico City in 1936, and then presents the events leading up to it in flashback. The Great Flamarion (Erich von Stroheim) is an arrogant, friendless, and misogynous marksman who displays his trick gunshot act in the vaudeville circuit. His show features a beautiful assistant, Connie (Mary Beth Hughes) and her drunken husband Al (Dan Duryea), Flamarion's other assistant. Flamarion falls in love with Connie, the movie's femme fatale, and is soon manipulated by her into killing her no good husband during one of their acts.
-    </p>
-  </div>
-</div>
+    <input type="checkbox" class="film-details__control-input visually-hidden" id="watched" name="watched">
+    <label for="watched" class="film-details__control-label film-details__control-label--watched">Already watched</label>
 
-<section class="film-details__controls">
-  <input type="checkbox" class="film-details__control-input visually-hidden" id="watchlist" name="watchlist">
-  <label for="watchlist" class="film-details__control-label film-details__control-label--watchlist">Add to watchlist</label>
-
-  <input type="checkbox" class="film-details__control-input visually-hidden" id="watched" name="watched">
-  <label for="watched" class="film-details__control-label film-details__control-label--watched">Already watched</label>
-
-  <input type="checkbox" class="film-details__control-input visually-hidden" id="favorite" name="favorite">
-  <label for="favorite" class="film-details__control-label film-details__control-label--favorite">Add to favorites</label>
-</section>`
+    <input type="checkbox" class="film-details__control-input visually-hidden" id="favorite" name="favorite">
+    <label for="favorite" class="film-details__control-label film-details__control-label--favorite">Add to favorites</label>
+  </section>`
   );
 };
 
@@ -272,13 +272,11 @@ const ShowMoreFilmsButton = () => {
 
 const createSiteFooterStatistics = () =>{
   return (
-  `<section class="footer__statistics">
-    <p>130 291 movies inside</p>
-  </section>`
+    `<section class="footer__statistics">
+      <p>130 291 movies inside</p>
+    </section>`
   );
 };
-
-
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
@@ -300,7 +298,7 @@ const filmsList = filmsElement.querySelector(`.films-list`);
 const filmsListContainer = filmsList.querySelector(`.films-list__container`);
 const FilmsListsExtra = filmsElement.querySelectorAll(`.films-list--extra`);
 
-for (let i = 0; i < FILM_CARDS_COUNT; i ++ ) {
+for ( let i = 0; i < FILM_CARDS_COUNT; i++ ) {
   render(filmsListContainer, createSiteFilmCard(), `beforeend`);
 }
 
@@ -312,7 +310,7 @@ FilmsListsExtra.forEach(function(element, i) {
 
   const filmsListContainer = element.querySelector(`.films-list__container`);
 
-  for(let i = 0; i< EXTRA_FILMS_COUNT; i++){
+  for ( let i = 0; i< EXTRA_FILMS_COUNT; i++){
     render(filmsListContainer, createSiteFilmCard(), `beforeend`);
   }
 
@@ -322,7 +320,7 @@ const siteFooterElement = document.querySelector(`.footer`);
 
 render(siteFooterElement, createSiteFooterStatistics(),`beforeend`);
 
-render(siteFooterElement, screateFilmDetailsPopup(),`afterend`)
+render(siteFooterElement, createFilmDetailsPopup(),`afterend`)
 
 const filmDetailsTopContainer = document.querySelector(`.form-details__top-container`);
 
