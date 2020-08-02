@@ -83,8 +83,7 @@ const createSiteFilmCard = () => {
 
 const createFilmDetailsPopup = () => {
   return (
-    `
-    <section class="film-details">
+   `<section class="film-details">
       <form class="film-details__inner" action="" method="get">
         <div class="form-details__top-container"></div>
         <div class="form-details__bottom-container"></div>
@@ -310,7 +309,7 @@ FilmsListsExtra.forEach(function (element, i) {
 
   render(element, createFilmsListExtraTitle(EXTRA_FILMS_TITLES[i]), `afterbegin`);
 
-  const elementFilmContainer = element.querySelector(`.films-list__container`)
+  const elementFilmContainer = element.querySelector(`.films-list__container`);
 
   for (let j = 0; j < EXTRA_FILMS_COUNT; j++) {
     render(elementFilmContainer, createSiteFilmCard(), `beforeend`);
@@ -321,13 +320,13 @@ const siteFooterElement = document.querySelector(`.footer`);
 
 render(siteFooterElement, createSiteFooterStatistics(), `beforeend`);
 
-// render(siteFooterElement, createFilmDetailsPopup(), `afterend`);
+render(siteFooterElement, createFilmDetailsPopup(), `afterend`);
 
-// const filmDetailsTopContainer = document.querySelector(`.form-details__top-container`);
+const filmDetailsTopContainer = document.querySelector(`.form-details__top-container`);
 
-// const filmDetailsBottomContainer = document.querySelector(`.form-details__bottom-container`);
+const filmDetailsBottomContainer = document.querySelector(`.form-details__bottom-container`);
 
-// render(filmDetailsTopContainer, createFilmDetailsDescription(), `beforeend`);
+render(filmDetailsTopContainer, createFilmDetailsDescription(), `beforeend`);
 
-// render(filmDetailsBottomContainer, createFilmDetailsComments(), `beforeend`);
+render(filmDetailsBottomContainer, createFilmDetailsComments(), `beforeend`);
 
