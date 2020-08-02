@@ -1,55 +1,55 @@
 "use strict";
 const FILM_CARDS_COUNT = 5;
 const EXTRA_FILMS_COUNT = 2;
-const EXTRA_FILMS_TITLES = [`Top rated`,`Most commented`];
+const EXTRA_FILMS_TITLES = [`Top rated`, `Most commented`];
 
 const createProfileRatingTemplate = () => {
   return (
-  `<section class="header__profile profile">
-    <p class="profile__rating">Movie Buff</p>
-    <img class="profile__avatar" src="images/bitmap@2x.png" alt="Avatar" width="35" height="35">
-  </section>`
+    `<section class="header__profile profile">
+      <p class="profile__rating">Movie Buff</p>
+      <img class="profile__avatar" src="images/bitmap@2x.png" alt="Avatar" width="35" height="35">
+    </section>`
   );
 };
 
 const createFilterTemplate = () => {
   return (
-  `<nav class="main-navigation">
-    <div class="main-navigation__items">
-      <a href="#all" class="main-navigation__item main-navigation__item--active">All movies</a>
-      <a href="#watchlist" class="main-navigation__item">Watchlist <span class="main-navigation__item-count">13</span></a>
-      <a href="#history" class="main-navigation__item">History <span class="main-navigation__item-count">4</span></a>
-      <a href="#favorites" class="main-navigation__item">Favorites <span class="main-navigation__item-count">8</span></a>
-    </div>
-    <a href="#stats" class="main-navigation__additional">Stats</a>
-  </nav>`
+    `<nav class="main-navigation">
+      <div class="main-navigation__items">
+        <a href="#all" class="main-navigation__item main-navigation__item--active">All movies</a>
+        <a href="#watchlist" class="main-navigation__item">Watchlist <span class="main-navigation__item-count">13</span></a>
+        <a href="#history" class="main-navigation__item">History <span class="main-navigation__item-count">4</span></a>
+        <a href="#favorites" class="main-navigation__item">Favorites <span class="main-navigation__item-count">8</span></a>
+      </div>
+      <a href="#stats" class="main-navigation__additional">Stats</a>
+    </nav>`
   );
 };
 
 const createSortTemplate = () => {
   return (
-  `<ul class="sort">
-    <li><a href="#" class="sort__button sort__button--active">Sort by default</a></li>
-    <li><a href="#" class="sort__button">Sort by date</a></li>
-    <li><a href="#" class="sort__button">Sort by rating</a></li>
-  </ul>`
+    `<ul class="sort">
+      <li><a href="#" class="sort__button sort__button--active">Sort by default</a></li>
+      <li><a href="#" class="sort__button">Sort by date</a></li>
+      <li><a href="#" class="sort__button">Sort by rating</a></li>
+    </ul>`
   );
 };
 
 const createFilmContainerTemplate = () => {
   return (
-  `<section class="films">
-    <section class="films-list">
-    <h2 class="films-list__title visually-hidden">All movies. Upcoming</h2>
-    <div class="films-list__container"></div>
-    </section>
-    <section class="films-list--extra">
-      <div class="films-list__container"></div>
-    </section>
-    <section class="films-list--extra">
-      <div class="films-list__container"></div>
-    </section>
-  </section>`
+    `<section class="films">
+      <section class="films-list">
+        <h2 class="films-list__title visually-hidden">All movies. Upcoming</h2>
+        <div class="films-list__container"></div>
+        </section>
+      <section class="films-list--extra">
+        <div class="films-list__container"></div>
+      </section>
+      <section class="films-list--extra">
+        <div class="films-list__container"></div>
+      </section>
+    </section>`
   );
 };
 
@@ -300,8 +300,8 @@ const filmsList = filmsElement.querySelector(`.films-list`);
 const filmsListContainer = filmsList.querySelector(`.films-list__container`);
 const FilmsListsExtra = filmsElement.querySelectorAll(`.films-list--extra`);
 
-for(let i = 0; i < FILM_CARDS_COUNT; i ++ ) {
-  render(filmsListContainer, createSiteFilmCard(), `beforeend`)
+for (let i = 0; i < FILM_CARDS_COUNT; i ++ ) {
+  render(filmsListContainer, createSiteFilmCard(), `beforeend`);
 }
 
 render(filmsList, ShowMoreFilmsButton(), `beforeend`);
@@ -322,13 +322,13 @@ const siteFooterElement = document.querySelector(`.footer`);
 
 render(siteFooterElement, createSiteFooterStatistics(),`beforeend`);
 
-render(siteFooterElement,createFilmDetailsPopup(),`afterend`)
+render(siteFooterElement, screateFilmDetailsPopup(),`afterend`)
 
 const filmDetailsTopContainer = document.querySelector(`.form-details__top-container`);
 
-const filmDetailsBottomContainer= document.querySelector(`.form-details__bottom-container`);
+const filmDetailsBottomContainer = document.querySelector(`.form-details__bottom-container`);
 
-render(filmDetailsTopContainer, createFilmDetailsDescription(),'beforeend')
+render(filmDetailsTopContainer, createFilmDetailsDescription(), 'beforeend');
 
-render(filmDetailsBottomContainer, createFilmDetailsComments(),`beforeend`)
+render(filmDetailsBottomContainer, createFilmDetailsComments(), `beforeend`);
 
