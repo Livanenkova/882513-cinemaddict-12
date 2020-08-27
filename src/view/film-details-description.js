@@ -1,11 +1,13 @@
-export const createFilmDetailsDescription = () => {
+export const createFilmDetailsDescription = (filmsCard) => {
+  const {filmName, filmPoster, filmRating, filmYear, filmDuration, filmGenre} = filmsCard;
+
   return (
     `<div class="film-details__close">
     <button class="film-details__close-btn" type="button">close</button>
     </div>
     <div class="film-details__info-wrap">
     <div class="film-details__poster">
-      <img class="film-details__poster-img" src="./images/posters/the-great-flamarion.jpg" alt="">
+      <img class="film-details__poster-img" src=${filmPoster} alt="">
 
       <p class="film-details__age">18+</p>
     </div>
@@ -13,12 +15,12 @@ export const createFilmDetailsDescription = () => {
     <div class="film-details__info">
       <div class="film-details__info-head">
         <div class="film-details__title-wrap">
-          <h3 class="film-details__title">The Great Flamarion</h3>
-          <p class="film-details__title-original">Original: The Great Flamarion</p>
+          <h3 class="film-details__title">${filmName}</h3>
+          <p class="film-details__title-original">Original: ${filmName}</p>
         </div>
 
         <div class="film-details__rating">
-          <p class="film-details__total-rating">8.9</p>
+          <p class="film-details__total-rating">${filmRating}</p>
         </div>
       </div>
 
@@ -37,11 +39,11 @@ export const createFilmDetailsDescription = () => {
         </tr>
         <tr class="film-details__row">
           <td class="film-details__term">Release Date</td>
-          <td class="film-details__cell">30 March 1945</td>
+          <td class="film-details__cell">${filmYear}</td>
         </tr>
         <tr class="film-details__row">
           <td class="film-details__term">Runtime</td>
-          <td class="film-details__cell">1h 18m</td>
+          <td class="film-details__cell">${filmDuration}</td>
         </tr>
         <tr class="film-details__row">
           <td class="film-details__term">Country</td>
@@ -50,9 +52,9 @@ export const createFilmDetailsDescription = () => {
         <tr class="film-details__row">
           <td class="film-details__term">Genres</td>
           <td class="film-details__cell">
-            <span class="film-details__genre">Drama</span>
-            <span class="film-details__genre">Film-Noir</span>
-            <span class="film-details__genre">Mystery</span></td>
+            <span class="film-details__genre">${filmGenre}</span>
+            <span class="film-details__genre">${filmGenre}</span>
+            <span class="film-details__genre">${filmGenre}</span></td>
         </tr>
       </table>
 
