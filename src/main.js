@@ -2,8 +2,8 @@ import ProfileRatingView from "./view/profile-rating.js";
 import FilterView from "./view/filter.js";
 import SortView from "./view/sort.js";
 import FilmContainerView from "./view/film-container.js";
-import {createFilmsListExtraTitle} from "./view/films-list-extra-title.js";
-import {createSiteFilmCard} from "./view/film-card.js";
+import FilmsListExtraTitleView from "./view/films-list-extra-title.js";
+import SiteFilmCardView from "./view/film-card.js";
 import {createFilmDetailsPopup} from "./view/film-details-popup.js";
 import {createFilmDetailsDescription} from "./view/film-details-description.js";
 import {createFilmDetailsComments} from "./view/film-details-comments.js";
@@ -38,7 +38,7 @@ const FilmsListsExtra = filmsElement.querySelectorAll(`.films-list--extra`);
 
 for (let i = 0; i < Math.min(filmsCard.length, FILM_CARDS_COUNT); i++) {
 
-  renderTemplate(filmsListContainer, createSiteFilmCard(filmsCard[i]), `beforeend`);
+  renderTemplate(filmsListContainer, new SiteFilmCardView(filmsCard[i]).getElement(), RenderPosition.BEFOREEND);
 
 }
 
@@ -55,11 +55,10 @@ if (filmsCard.length > FILM_CARDS_COUNT) {
     evt.preventDefault();
     filmsCard
     .slice(renderedFilmCount, renderedFilmCount + FILM_CARDS_COUNT)
-    .forEach((task) => renderTemplate(elementFilmContainer.getElement(), createSiteFilmCard(filmsCard[i]), `beforeend`));
+    .forEach((filmsCard) => renderElement(filmsList, new SiteFilmCardView(filmsCard).getElement(), RenderPosition.BEFOREEND);
+    renderedFilmCount += FILM_CARDS_COUNT;
 
-    renderedFilmCount += TASK_COUNT_PER_STEP;
-
-    if (renderedFilmCount >= tasks.length) {
+    if (renderedFilmCount >= filmsCard.length) {
       loadMoreButtonComponent.getElement().remove();
       loadMoreButtonComponent.removeElement();
     }
@@ -69,7 +68,7 @@ if (filmsCard.length > FILM_CARDS_COUNT) {
 
 FilmsListsExtra.forEach(function (element, i) {
 
-  renderTemplate(element, createFilmsListExtraTitle(EXTRA_FILMS_TITLES[i]), `afterbegin`);
+  renderElement(element, new FilmsListExtraTitleView(EXTRA_FILMS_TITLES[i]).getElement(), RenderPosition.AFTERBEGIN);
 
   const elementFilmContainer = element.querySelector(`.films-list__container`);
 

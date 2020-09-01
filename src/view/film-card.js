@@ -1,4 +1,8 @@
-export const createSiteFilmCard = (filmsCard) => {
+import {createElement} from "../utils.js";
+  // console.log(filmsCard)
+
+
+const createSiteFilmCardTemplate = (filmsCard) => {
   const {filmName, filmPoster, filmDescription, filmRating, filmYear, filmDuration, filmGenre} = filmsCard;
 
   return (
@@ -21,3 +25,26 @@ export const createSiteFilmCard = (filmsCard) => {
   </article>`
   );
 };
+
+export default class SiteFilmCard {
+  constructor(filmsCard) {
+    this._filmsCard = filmsCard;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createSiteFilmCardTemplate(this._filmsCard);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
