@@ -7,12 +7,13 @@ export const createFilmsListExtraTitleTemplate = (title) => {
 };
 
 export default class FilmsListExtraTitle {
-  constructor() {
+  constructor(title) {
+    this._title = title;
     this._element = null;
   }
 
   getTemplate() {
-    return createFilmsListExtraTitleTemplate();
+    return createFilmsListExtraTitleTemplate(this._title);
   }
 
   getElement() {
