@@ -1,8 +1,7 @@
 import {createElement} from "../utils.js";
-  // console.log(filmsCard)
 
 
-const createSiteFilmCardTemplate = (filmsCard) => {
+const createFilmCardTemplate = (filmsCard) => {
   const {filmName, filmPoster, filmDescription, filmRating, filmYear, filmDuration, filmGenre} = filmsCard;
 
   return (
@@ -26,14 +25,14 @@ const createSiteFilmCardTemplate = (filmsCard) => {
   );
 };
 
-export default class SiteFilmCard {
+export default class FilmCard {
   constructor(filmsCard) {
     this._filmsCard = filmsCard;
     this._element = null;
   }
 
   getTemplate() {
-    return createSiteFilmCardTemplate(this._filmsCard);
+    return createFilmCardTemplate(this._filmsCard);
   }
 
   getElement() {
