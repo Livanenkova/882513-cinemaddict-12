@@ -108,7 +108,7 @@ if (filmsCard.length > FILM_CARDS_COUNT) {
     evt.preventDefault();
     filmsCard
     .slice(renderedFilmCount, renderedFilmCount + FILM_CARDS_COUNT)
-    .forEach(() => render(filmsListContainer, new FilmCardView(filmsCard).getElement(), RenderPosition.BEFOREEND));
+    .forEach((filmsCard) => render(filmsListContainer, new FilmCardView(filmsCard).getElement(), RenderPosition.BEFOREEND));
     renderedFilmCount += FILM_CARDS_COUNT;
 
     if (renderedFilmCount >= filmsCard.length) {
