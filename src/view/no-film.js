@@ -8,7 +8,6 @@ const createNoFilmTemplate = () => {
     </section>
       </section>
     </section>`;
-  console.log('тест3')
 };
 
 export default class NoFilm {
