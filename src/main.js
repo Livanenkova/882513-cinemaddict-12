@@ -5,6 +5,7 @@ import FilmContainerView from "./view/film-container.js";
 import FilmsListExtraTitleView from "./view/films-list-extra-title.js";
 import FilmCardView from "./view/film-card.js";
 import FilmDetailsPopupView from "./view/film-details-popup.js";
+import ClosePopupButtonView from "./view/close-popup-button.js";
 import NoFilmView from "./view/no-film.js";
 import LoadFilmsButtonView from "./view/load-more-button.js";
 import FooterStatisticsView from "./view/footer-statistics.js";
@@ -47,7 +48,11 @@ const renderFilm = (filmListElement, film) => {
   const filmComments = filmComponent.getElement().querySelector(`.film-card__comments`);
 
   const popupComponent = new FilmDetailsPopupView(film);
+  const closePopupButtonComponent = new ClosePopupButtonView(film);
+  const filmPopupContainer = popupComponent.getElement().querySelector(`.film-details__info-wrap`);
   const buttonClose = popupComponent.getElement().querySelector(`.film-details__close-btn`);
+
+  render(filmPopupContainer, closePopupButtonComponent .getElement(), RenderPosition.BEFOREEND);
 
   const replacePopupToFilm = () => {
 
@@ -62,14 +67,12 @@ const renderFilm = (filmListElement, film) => {
     }
   };
 
-  filmComponent.getElement().addEventListener(`click`, () => {
+  filmComponent.setFilmClickHandler(() => {
     replacePopupToFilm();
+    document.addEventListener(`keydown`, onEscKeyDown);
   });
 
-  document.addEventListener(`keydown`, onEscKeyDown);
-
-  buttonClose.addEventListener(`click`, (evt) => {
-    evt.preventDefault();
+  closePopupButtonComponent.setClosePopupClickHandler(() => {
     replacePopupToFilm();
   });
 
@@ -101,20 +104,21 @@ if (filmsCard.length > FILM_CARDS_COUNT) {
 
   let renderedFilmCount = FILM_CARDS_COUNT;
 
-  render(filmsList, new LoadFilmsButtonView().getElement(), RenderPosition.BEFOREEND);
+  const loadFilmsButtonComponent = new LoadFilmsButtonView();
+
+  render(filmsList, loadFilmsButtonComponent.getElement(), RenderPosition.BEFOREEND);
 
   const loadMoreButton = filmsList.querySelector(`.films-list__show-more`);
 
-  loadMoreButton.addEventListener(`click`, (evt) => {
-    evt.preventDefault();
+  loadFilmsButtonComponent.setClickHandler(() => {
     filmsCard
     .slice(renderedFilmCount, renderedFilmCount + FILM_CARDS_COUNT)
     .forEach((filmsCard) => render(filmsListContainer, new FilmCardView(filmsCard).getElement(), RenderPosition.BEFOREEND));
     renderedFilmCount += FILM_CARDS_COUNT;
 
     if (renderedFilmCount >= filmsCard.length) {
-      loadMoreButton.getElement().remove();
-      loadMoreButton.removeElement();
+      loadFilmsButtonComponent.getElement().remove();
+      loadFilmsButtonComponent.removeElement();
     }
   });
 }
