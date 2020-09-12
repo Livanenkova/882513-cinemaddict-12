@@ -15,7 +15,7 @@ import {render, RenderPosition} from "./utils.js";
 const FILM_CARDS_COUNT = 5;
 const EXTRA_FILMS_COUNT = 2;
 const EXTRA_FILMS_TITLES = [`Top rated`, `Most commented`];
-const DATA_FILM_CARDS_COUNT = 0;
+const DATA_FILM_CARDS_COUNT = 20;
 
 const filmsCard = new Array(DATA_FILM_CARDS_COUNT).fill().map(generatefilm);
 const filters = generateFilter(filmsCard);
@@ -109,7 +109,7 @@ if (filmsCard.length > FILM_CARDS_COUNT) {
     evt.preventDefault();
     filmsCard
     .slice(renderedFilmCount, renderedFilmCount + FILM_CARDS_COUNT)
-    .forEach(() => render(filmsListContainer, new FilmCardView(filmsCard).getElement(), RenderPosition.BEFOREEND));
+    .forEach((filmsCard) => render(filmsListContainer, new FilmCardView(filmsCard).getElement(), RenderPosition.BEFOREEND));
     renderedFilmCount += FILM_CARDS_COUNT;
 
     if (renderedFilmCount >= filmsCard.length) {

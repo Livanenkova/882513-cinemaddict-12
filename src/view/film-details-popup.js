@@ -1,4 +1,4 @@
-import {createElement} from "../utils.js";
+import AbstractView from "./abstract.js";
 import {createFilmDetailsDescription} from "../view/film-details-description.js";
 import {createFilmDetailsComments} from "../view/film-details-comments.js";
 
@@ -18,25 +18,13 @@ const createFilmDetailsPopupTemplate = (film) => {
   );
 };
 
-export default class FilmDetailsPopup {
+export default class FilmDetailsPopup extends AbstractView {
   constructor(film) {
-    this._element = null;
+    super()
     this._film = film;
   }
 
   getTemplate() {
     return createFilmDetailsPopupTemplate(this._film);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

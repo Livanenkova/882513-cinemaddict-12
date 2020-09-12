@@ -1,5 +1,4 @@
-import {createElement} from "../utils.js";
-
+import AbstractView from "./abstract.js";
 
 const createFilmCardTemplate = (filmsCard) => {
   const {filmName, filmPoster, filmDescription, filmRating, filmYear, filmDuration, filmGenre} = filmsCard;
@@ -25,25 +24,13 @@ const createFilmCardTemplate = (filmsCard) => {
   );
 };
 
-export default class FilmCard {
+export default class FilmCard extends AbstractView {
   constructor(filmsCard) {
+    super()
     this._filmsCard = filmsCard;
-    this._element = null;
   }
 
   getTemplate() {
     return createFilmCardTemplate(this._filmsCard);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
