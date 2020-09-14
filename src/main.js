@@ -11,7 +11,7 @@ import LoadFilmsButtonView from "./view/load-more-button.js";
 import FooterStatisticsView from "./view/footer-statistics.js";
 import {generatefilm} from "./mock/film.js";
 import {generateFilter} from "./mock/filter.js";
-import {render, RenderPosition} from "./utils.js";
+import {render, RenderPosition, replace, remove} from "./utils/render.js";
 
 const FILM_CARDS_COUNT = 5;
 const EXTRA_FILMS_COUNT = 2;
@@ -26,11 +26,11 @@ const siteHeaderElement = document.querySelector(`.header`);
 const siteHeaderLogoElement = siteHeaderElement.querySelector(`.header__logo`);
 const siteMainElement = document.querySelector(`.main`);
 
-render(siteHeaderLogoElement, new ProfileRatingView().getElement(), RenderPosition.BEFOREEND);
+render(siteHeaderLogoElement, new ProfileRatingView(), RenderPosition.BEFOREEND);
 
-render(siteMainElement, new FilterView(filters).getElement(), RenderPosition.BEFOREEND);
-render(siteMainElement, new SortView().getElement(), RenderPosition.BEFOREEND);
-render(siteMainElement, new FilmContainerView().getElement(), RenderPosition.BEFOREEND);
+render(siteMainElement, new FilterView(filters), RenderPosition.BEFOREEND);
+render(siteMainElement, new SortView(), RenderPosition.BEFOREEND);
+render(siteMainElement, new FilmContainerView(), RenderPosition.BEFOREEND);
 
 
 const filmsElement = document.querySelector(`.films`);
@@ -52,7 +52,7 @@ const renderFilm = (filmListElement, film) => {
   const filmPopupContainer = popupComponent.getElement().querySelector(`.film-details__info-wrap`);
   const buttonClose = popupComponent.getElement().querySelector(`.film-details__close-btn`);
 
-  render(filmPopupContainer, closePopupButtonComponent .getElement(), RenderPosition.BEFOREEND);
+  render(filmPopupContainer, closePopupButtonComponent, RenderPosition.BEFOREEND);
 
   const replacePopupToFilm = () => {
 
@@ -84,13 +84,13 @@ const renderFilm = (filmListElement, film) => {
   filmPoster.addEventListener(`mousedown`, onMouseDownShowPopup);
   filmTitle.addEventListener(`mousedown`, onMouseDownShowPopup);
   filmComments.addEventListener(`mousedown`, onMouseDownShowPopup);
-  render(filmListElement, filmComponent.getElement(), RenderPosition.BEFOREEND);
+  render(filmListElement, filmComponent, RenderPosition.BEFOREEND);
 };
 
 
 if (filmsCard.length === 0) {
 
-  render(FilmContainer, noFilmComponent.getElement(), RenderPosition.BEFOREEND);
+  render(FilmContainer, noFilmComponent, RenderPosition.BEFOREEND);
 
 } else {
 
@@ -106,14 +106,14 @@ if (filmsCard.length > FILM_CARDS_COUNT) {
 
   const loadFilmsButtonComponent = new LoadFilmsButtonView();
 
-  render(filmsList, loadFilmsButtonComponent.getElement(), RenderPosition.BEFOREEND);
+  render(filmsList, loadFilmsButtonComponent, RenderPosition.BEFOREEND);
 
   const loadMoreButton = filmsList.querySelector(`.films-list__show-more`);
 
   loadFilmsButtonComponent.setClickHandler(() => {
     filmsCard
     .slice(renderedFilmCount, renderedFilmCount + FILM_CARDS_COUNT)
-    .forEach((filmsCard) => render(filmsListContainer, new FilmCardView(filmsCard).getElement(), RenderPosition.BEFOREEND));
+    .forEach((filmsCard) => render(filmsListContainer, new FilmCardView(filmsCard), RenderPosition.BEFOREEND));
     renderedFilmCount += FILM_CARDS_COUNT;
 
     if (renderedFilmCount >= filmsCard.length) {
@@ -126,13 +126,13 @@ if (filmsCard.length > FILM_CARDS_COUNT) {
 if (filmsCard.length > 0) {
   FilmsListsExtra.forEach(function (element, i) {
 
-    render(element, new FilmsListExtraTitleView(EXTRA_FILMS_TITLES[i]).getElement(), RenderPosition.AFTERBEGIN);
+    render(element, new FilmsListExtraTitleView(EXTRA_FILMS_TITLES[i]), RenderPosition.AFTERBEGIN);
 
     const elementFilmContainer = element.querySelector(`.films-list__container`);
 
     for (let j = 0; j < EXTRA_FILMS_COUNT; j++) {
       if (filmsCard[i]) {
-        render(elementFilmContainer, new FilmCardView(filmsCard[i]).getElement(), RenderPosition.BEFOREEND);
+        render(elementFilmContainer, new FilmCardView(filmsCard[i]), RenderPosition.BEFOREEND);
       }
     }
   });
@@ -140,4 +140,4 @@ if (filmsCard.length > 0) {
 
 const siteFooterElement = document.querySelector(`.footer`);
 
-render(siteFooterElement, new FooterStatisticsView().getElement(), RenderPosition.BEFOREEND);
+render(siteFooterElement, new FooterStatisticsView(), RenderPosition.BEFOREEND);
