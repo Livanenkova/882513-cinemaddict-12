@@ -20,7 +20,7 @@ const createFilmDetailsPopupTemplate = (film) => {
 
 export default class FilmDetailsPopup extends AbstractView {
   constructor(film) {
-    super()
+    super();
     this._film = film;
   }
 

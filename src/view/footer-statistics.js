@@ -8,8 +8,7 @@ const createSiteFooterStatistics = () =>{
   );
 };
 
-
-export default class FooterStatistics extends AbstractView  {
+export default class FooterStatistics extends AbstractView {
 
   getTemplate() {
     return createSiteFooterStatistics();
