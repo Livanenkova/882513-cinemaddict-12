@@ -60,7 +60,7 @@ export default class MovieListPresenter {
       loadFilmsButtonComponent.setClickHandler(() => {
         filmsCard
       .slice(renderedFilmCount, renderedFilmCount + FILM_CARDS_COUNT)
-      .forEach(() => render(filmsListContainer, new FilmCardView(filmsCard), RenderPosition.BEFOREEND));
+      .forEach((filmsCard) => render(filmsListContainer, new FilmCardView(filmsCard), RenderPosition.BEFOREEND));
         renderedFilmCount += FILM_CARDS_COUNT;
 
         if (renderedFilmCount >= filmsCard.length) {

@@ -1,6 +1,6 @@
 import ProfileRatingView from "./view/profile-rating.js";
 import FilterView from "./view/filter.js";
-import SortView from "./view/sort.js";
+
 import FilmContainerView from "./view/film-container.js";
 import FilmsListExtraTitleView from "./view/films-list-extra-title.js";
 import FilmCardView from "./view/film-card.js";
@@ -9,6 +9,7 @@ import {generatefilm} from "./mock/film.js";
 import {generateFilter} from "./mock/filter.js";
 import {render, RenderPosition} from "./utils/render.js";
 import MovieListPresenter from "./presenter/movie-list-presenter.js";
+import SortPresenter from "./presenter/sort-presenter.js";
 
 
 const EXTRA_FILMS_COUNT = 2;
@@ -26,7 +27,9 @@ render(siteHeaderLogoElement, new ProfileRatingView(), RenderPosition.BEFOREEND)
 const siteMainElement = document.querySelector(`.main`);
 render(siteMainElement, new FilterView(filters), RenderPosition.BEFOREEND);
 // Рендер сортировки
-render(siteMainElement, new SortView(), RenderPosition.BEFOREEND);
+// render(siteMainElement, new SortView(), RenderPosition.BEFOREEND);
+const sort = new SortPresenter();
+sort.init();
 // Рендер контейнера для карточек фильмов и блоков top rated и most commented
 render(siteMainElement, new FilmContainerView(), RenderPosition.BEFOREEND);
 
