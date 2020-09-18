@@ -1,13 +1,13 @@
-import {isTaskExpired, isTaskExpiringToday} from "../utils.js";
+import {isFilmExpired, isFilmExpiringToday} from "../utils/film.js";
 
 const taskToFilterMap = {
   all: (filmsCard) => filmsCard.filter((card) => !card).length,
   watchlist: (filmsCard) => filmsCard
     .filter((card) => !card.isWatchlist)
-    .filter((card) => isTaskExpired(card.numberFilm)).length,
+    .filter((card) => isFilmExpired(card.numberFilm)).length,
   history: (filmsCard) => filmsCard
     .filter((card) => !card.isHistory)
-    .filter((card) => isTaskExpiringToday(card.numberFilm)).length,
+    .filter((card) => isFilmExpiringToday(card.numberFilm)).length,
   favorites: (filmsCard) => filmsCard
     .filter((card) => !card.isFavorites)
     .filter((card) => card.isFavorite).length,
