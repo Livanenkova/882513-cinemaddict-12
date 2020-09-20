@@ -12,8 +12,10 @@ export default class FilmPresenter {
     this._films = films;
 
     this._filmCardComponent = new FilmCardView();
-    this._filmDetailsPopupComponent = new FilmDetailsPopupView();
-    this._closePopupButtonView = new ClosePopupButtonView();
+    this._filmDetailsPopupComponent = new FilmDetailsPopupView(films);
+    this._closePopupButtonComponent = new ClosePopupButtonView(films);
+    this._filmComponent = new FilmCardView(films);
+    this._closePopupButtonComponent = new ClosePopupButtonView(films);
   }
 
   init() {
@@ -22,23 +24,23 @@ export default class FilmPresenter {
   }
 
   _renderFilmCard(filmListElement, film) {
-    const filmComponent = new FilmCardView(film);
-    render(filmListElement, filmComponent, RenderPosition.BEFOREEND);
+
+    render(filmListElement, this._filmComponent, RenderPosition.BEFOREEND);
 
     const body = document.querySelector(`body`);
-    const filmPoster = filmComponent.getElement().querySelector(`.film-card__poster`);
-    const filmTitle = filmComponent.getElement().querySelector(`.film-card__title`);
-    const filmComments = filmComponent.getElement().querySelector(`.film-card__comments`);
+    const filmPoster = this._filmComponent.getElement().querySelector(`.film-card__poster`);
+    const filmTitle = this._filmComponent.getElement().querySelector(`.film-card__title`);
+    const filmComments = this._filmComponent.getElement().querySelector(`.film-card__comments`);
 
     // рендер кнопки закрытия попапа
-    const popupComponent = new FilmDetailsPopupView(film);
-    const closePopupButtonComponent = new ClosePopupButtonView(film);
-    const filmPopupContainer = popupComponent.getElement().querySelector(`.film-details__info-wrap`);
+    // const popupComponent = new FilmDetailsPopupView(film);
+
+    const filmPopupContainer = this._filmDetailsPopupComponent.getElement().querySelector(`.film-details__info-wrap`);
     // const buttonClose = popupComponent.getElement().querySelector(`.film-details__close-btn`);
-    render(filmPopupContainer, closePopupButtonComponent, RenderPosition.BEFOREEND);
+    render(filmPopupContainer, this._closePopupButtonComponent, RenderPosition.BEFOREEND);
 
     const replacePopupToFilm = () => {
-      popupComponent.getElement().remove();
+      this._filmDetailsPopupComponent.getElement().remove();
     };
 
     const onEscKeyDown = (evt) => {
@@ -49,17 +51,17 @@ export default class FilmPresenter {
       }
     };
 
-    filmComponent.setFilmClickHandler(() => {
+    this._filmComponent.setFilmClickHandler(() => {
       replacePopupToFilm();
       document.addEventListener(`keydown`, onEscKeyDown);
     });
 
-    closePopupButtonComponent.setClosePopupClickHandler(() => {
+    this._closePopupButtonComponent.setClosePopupClickHandler(() => {
       replacePopupToFilm();
     });
 
     const onMouseDownShowPopup = () => {
-      body.appendChild(popupComponent.getElement());
+      body.appendChild(this._filmDetailsPopupComponent.getElement());
       document.addEventListener(`keydown`, onEscKeyDown);
     };
 

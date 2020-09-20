@@ -1,6 +1,5 @@
 import ProfileRatingView from "./view/profile-rating.js";
 import FilterView from "./view/filter.js";
-
 import FilmContainerView from "./view/film-container.js";
 import FilmsListExtraTitleView from "./view/films-list-extra-title.js";
 import FilmCardView from "./view/film-card.js";
@@ -8,8 +7,11 @@ import FooterStatisticsView from "./view/footer-statistics.js";
 import {generatefilm} from "./mock/film.js";
 import {generateFilter} from "./mock/filter.js";
 import {render, RenderPosition} from "./utils/render.js";
-import MovieListPresenter from "./presenter/movie-list-presenter.js";
-import SortPresenter from "./presenter/sort-presenter.js";
+import MovieListPresenter from "./presenter/movie-list.js";
+import SortPresenter from "./presenter/sort.js";
+import {sortByDate, sortByRating} from "./utils/film.js";
+import {SortType} from "./const.js";
+
 
 
 const EXTRA_FILMS_COUNT = 2;
@@ -23,13 +25,14 @@ const filters = generateFilter(filmsCard);
 const siteHeaderElement = document.querySelector(`.header`);
 const siteHeaderLogoElement = siteHeaderElement.querySelector(`.header__logo`);
 render(siteHeaderLogoElement, new ProfileRatingView(), RenderPosition.BEFOREEND);
-// Рендер фильтра
 const siteMainElement = document.querySelector(`.main`);
+
+// Рендер фильтра
+
 render(siteMainElement, new FilterView(filters), RenderPosition.BEFOREEND);
 // Рендер сортировки
-// render(siteMainElement, new SortView(), RenderPosition.BEFOREEND);
-const sort = new SortPresenter();
-sort.init();
+const sort = new SortPresenter(filmsCard);
+sort.init(filmsCard);
 // Рендер контейнера для карточек фильмов и блоков top rated и most commented
 render(siteMainElement, new FilmContainerView(), RenderPosition.BEFOREEND);
 
@@ -64,3 +67,39 @@ if (filmsCard.length > 0) {
 // Рендер отрисовки футера
 const siteFooterElement = document.querySelector(`.footer`);
 render(siteFooterElement, new FooterStatisticsView(), RenderPosition.BEFOREEND);
+
+
+const currentSortType = SortType.DEFAULT;
+
+const sortFilms = (sortType) => {
+
+// const sortButton = document.querySelector('sort__button--active');
+  switch (sortType) {
+    case SortType.DATE:
+        filmsCard.sort(sortByDate);
+        // window.addClass(sortButton, 'sort__button--active');
+        console.log(тест)
+        break;
+      case SortType.RATING:
+        filmsCard.sort(sortByRating);
+        // window.addClass(sortButton, 'sort__button--active');
+        break;
+      default:
+        filmsCard = filmsCard.slice();
+    }
+
+    currentSortType = sortType;
+  }
+
+  export const handleSortTypeChange = (sortType) => {
+     if (currentSortType === sortType) {
+      return;
+    }
+
+    sortFilms(sortType);
+    movieList.init();
+  }
+
+  // const setSortTypeChangeHandler = (handleSortTypeChange) => {
+
+  // };

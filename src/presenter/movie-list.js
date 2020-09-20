@@ -1,5 +1,5 @@
-import FilmPresenter from "./film-presenter.js";
-import FilmContainerView from "../view/film-container.js";
+import FilmPresenter from "./film.js";
+
 import LoadFilmsButtonView from "../view/load-more-button.js";
 import NoFilmView from "../view/no-film.js";
 import FilmCardView from "../view/film-card.js";
@@ -12,22 +12,22 @@ export default class MovieListPresenter {
     this._filmContainer = filmContainer;
     this._films = films;
 
-    this._FilmContainerComponent = new FilmContainerView();
+    // this._FilmContainerComponent = new FilmContainerView();
     this._LoadFilmsButtonComponent = new LoadFilmsButtonView();
     this._NoFilmView = new NoFilmView();
   }
 
   init() {
-    // this._boardFilms = boardFilms.slice();
-    this._renderFilmContainer(this._filmContainer, this._films);
+    this._clearMovieList()
+    // this._renderFilmContainer(this._filmContainer, this._films);
     this._renderMovieList(this._filmContainer, this._films);
     this._renderLoadFilmsButton(this._filmContainer, this._films);
   }
 
-  _renderFilmContainer() {
+  // _renderFilmContainer() {
 
-    render(this._FilmContainerComponent, this._films, RenderPosition.BEFOREEND);
-  }
+  //   render(this._FilmContainerComponent, this._films, RenderPosition.BEFOREEND);
+  // }
 
 
   _renderMovieList(filmContainer, films) {
@@ -45,6 +45,11 @@ export default class MovieListPresenter {
     }
   }
 
+  _clearMovieList(filmContainer) {
+    this._filmContainer.innerHTML = ``;
+    this._renderMovieList(this._filmContainer, this._films);
+  }
+
   _renderLoadFilmsButton(filmListElement, filmsCard) {
     const FILM_CARDS_COUNT = 5;
     const filmsElement = document.querySelector(`.films`);
@@ -60,7 +65,7 @@ export default class MovieListPresenter {
       loadFilmsButtonComponent.setClickHandler(() => {
         filmsCard
       .slice(renderedFilmCount, renderedFilmCount + FILM_CARDS_COUNT)
-      .forEach((filmsCard) => render(filmsListContainer, new FilmCardView(filmsCard), RenderPosition.BEFOREEND));
+      .forEach((filmCard) => render(filmsListContainer, new FilmCardView(filmCard), RenderPosition.BEFOREEND));
         renderedFilmCount += FILM_CARDS_COUNT;
 
         if (renderedFilmCount >= filmsCard.length) {
