@@ -1,6 +1,6 @@
 import AbstractView from "./abstract.js";
-import {createFilmDetailsDescription} from "../view/film-details-description.js";
-import {createFilmDetailsComments} from "../view/film-details-comments.js";
+import {createFilmDetailsDescription} from "./FilmDetailsDescriptionView.js";
+import {createFilmDetailsComments} from "./FilmDetailsCommentsView.js";
 
 const createFilmDetailsPopupTemplate = (film) => {
   return (
@@ -18,7 +18,7 @@ const createFilmDetailsPopupTemplate = (film) => {
   );
 };
 
-export default class FilmDetailsPopup extends AbstractView {
+export default class FilmDetails extends AbstractView {
   constructor(film) {
     super();
     this._film = film;
@@ -27,4 +27,5 @@ export default class FilmDetailsPopup extends AbstractView {
   getTemplate() {
     return createFilmDetailsPopupTemplate(this._film);
   }
+
 }

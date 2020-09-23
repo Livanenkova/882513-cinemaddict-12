@@ -22,6 +22,11 @@ export default class Abstract {
   }
 
   removeElement() {
+    this._element.remove();
     this._element = null;
+  }
+
+  addClass(item, className) {
+    item.classList.add(className);
   }
 }
