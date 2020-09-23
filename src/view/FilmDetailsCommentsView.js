@@ -1,13 +1,12 @@
-export const createFilmDetailsComments = (filmsCard) => {
-  const {comment} = filmsCard;
-
-  const commentElement = comment.map(createComment).join(``);
-
+export const createFilmDetailsComments = () => {
+// export const createFilmDetailsComments = (filmsCard) => {
+  // const {comment} = filmsCard;
+  // const commentElement = comment.map(createComment).join(``);
   return (
     `<section class="film-details__comments-wrap">
     <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">4</span></h3>
     <ul class="film-details__comments-list">
-      ${commentElement}
+
     </ul>
     <div class="film-details__new-comment">
       <div for="add-emoji" class="film-details__add-emoji-label"></div>
@@ -38,20 +37,20 @@ export const createFilmDetailsComments = (filmsCard) => {
 };
 
 
-const createComment = (comment) => {
-  const {avatar, text, name, date} = comment;
+// const createComment = (comment) => {
+//   const {avatar, text, name, date} = comment;
 
-  return `<li class="film-details__comment">
-      <span class="film-details__comment-emoji">
-          <img src="${avatar}" width="55" height="55" alt="emoji-smile">
-        </span>
-        <div>
-          <p class="film-details__comment-text">${text}</p>
-          <p class="film-details__comment-info">
-            <span class="film-details__comment-author">${name}</span>
-            <span class="film-details__comment-day">${date}</span>
-            <button class="film-details__comment-delete">Delete</button>
-          </p>
-        </div>
-  </li>`;
-};
+//   return `<li class="film-details__comment">
+//       <span class="film-details__comment-emoji">
+//           <img src="${avatar}" width="55" height="55" alt="emoji-smile">
+//         </span>
+//         <div>
+//           <p class="film-details__comment-text">${text}</p>
+//           <p class="film-details__comment-info">
+//             <span class="film-details__comment-author">${name}</span>
+//             <span class="film-details__comment-day">${date}</span>
+//             <button class="film-details__comment-delete">Delete</button>
+//           </p>
+//         </div>
+//   </li>`;
+// };
